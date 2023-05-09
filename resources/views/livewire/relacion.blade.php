@@ -1,5 +1,6 @@
 <div>
     <div>
+        <h1>hola mundo !</h1>
         <div class="relative">
         <x-button wire:click="crear" class="top-0 right-0 bg-blue-700 hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 object-right">Crear Producto</x-button>
         <div class="relative mt-2 rounded-md shadow-sm">

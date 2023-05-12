@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\PedidosProducto;
 use App\Http\Livewire\Relacioncontroller;
 use App\Http\Livewire\Test;
+use App\Models\PedidoProducto;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +31,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/welcome', [PedidoProducto::class, 'index']);
 

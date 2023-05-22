@@ -118,11 +118,18 @@
             Crear Producto
         </x-slot>
         <x-slot name="content">
+        <form wire:submit.prevent="submit">
             <label>Nombre</label><br>
             <input wire:model="nombre" type="text" id="product.nombre" class="rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{$nombre}}
+            @error('nombre')
+                   <x-input-error for="nombre">{{$message}}</x-input-error>
+            @enderror
             <br><br>
             <label for="">Precio</label><br>
             <input wire:model="precio"type="number" id="product.precio" class="rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="$">{{$precio}}
+            @error('precio')
+                <x-input-error for="precio">{{$message}}</x-input-error>
+            @enderror
             <br><br>
             <label for="">Categoria</label>
             <select wire:model="idcat"
@@ -130,12 +137,19 @@
             @foreach ($categorias as $categoria)
                 <option value="{{$categoria->id }}">{{ $categoria->descripcion }}</option>
             @endforeach
+            @error('idcat')
+                <x-input-error for="idcat">{{$message}}</x-input-error>
+             @enderror
             <input wire:model="stock" type="number" class="rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Stock..">{{$stock}} {{$idcat}}
+            @error('stock')
+                <x-input-error for="stock">{{$message}}</x-input-error>
+            @enderror
         </x-slot>
         <x-slot name="footer">
-            <x-danger-button  wire:click="save" class="mr-4">Crear</x-danger-button>
+            <x-danger-button type="submit" class="mr-4">Crear</x-danger-button>
             <x-button wire:click="$set('opencrear', false)">Cancelar</x-button>
         </x-slot>
+        </form>
     </x-dialog-modal>
     <script src="sweetalert2.all.min.js"></script>
 </div>

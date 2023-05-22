@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Categoria;
 use Livewire\Component;
 use App\Models\Producto;
 use Livewire\WithPagination;
@@ -20,9 +19,9 @@ class Relacion extends Component
             $nombre, $precio, $stock, $idcat;
 
     public $rules= [
-        'nombre' => 'required|string|min:4',
-        'precio' =>'required|numeric|between:1, 10000',
-        'stock' => 'required|numeric|between:1, 200',
+        'nombre' => 'required|min:4',
+        'precio' =>'required|between:1, 10000',
+        'stock' => 'required|between:1, 200',
     ];
 
     public function mount(){
@@ -60,16 +59,18 @@ class Relacion extends Component
         $this->opencrear=true;
     }
 
-    public function save(){
+    public function submit(){
         $this->validate();
         Producto::create([
             'nombre' => $this->nombre,
             'precio' => $this->precio,
             'stock' => $this->stock,
             'id_categoria' => $this->idcat,
+            'created_at' => now(),
+            'updated_at' => now()
 
         ]);
-        $this->opencrear=false;
+        $this->opencrear=0;
 
     }
 

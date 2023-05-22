@@ -56,18 +56,18 @@
 
                                     </tr>
                                 </thead>
-                                @foreach ($productos as $producto)
+                                @foreach ($productos as $item)
                                     <tbody>
                                         <tr class="border-b dark:border-neutral-500">
-                                            <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $producto->id }}</td>
-                                            <td class="whitespace-nowrap px-6 py-4">{{ $producto->nombre }}</td>
-                                            <td class="whitespace-nowrap px-6 py-4">{{ $producto->descripcion }}</td>
-                                            <td class="whitespace-nowrap px-6 py-4">${{ $producto->precio }}</td>
-                                            <td class="whitespace-nowrap px-6 py-4">{{ $producto->stock }}</td>
+                                            <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $item->id }}</td>
+                                            <td class="whitespace-nowrap px-6 py-4">{{ $item->nombre }}</td>
+                                            <td class="whitespace-nowrap px-6 py-4">{{ $item->descripcion }}</td>
+                                            <td class="whitespace-nowrap px-6 py-4">${{ $item->precio }}</td>
+                                            <td class="whitespace-nowrap px-6 py-4">{{ $item->stock }}</td>
                                             <td class="whitespace-nowrap px-6 py-4">
-                                                <x-button wire:click='delete({{ $producto->id }})'
+                                                <x-button wire:click='delete({{ $item->id }})'
                                                     class="bg-red-800 hover:bg-red-500">B</x-button>
-                                                <x-button wire:click="edit({{$producto->id}})" class="bg-green-800 hover:bg-green-500">E</x-button>
+                                                <x-button wire:click="edit('{{$item->id}}')" class="bg-green-800 hover:bg-green-500">E</x-button>
                                             </td>
                                         </tr>
                                 @endforeach
@@ -151,5 +151,6 @@
         </x-slot>
         </form>
     </x-dialog-modal>
+    @include('editProduct')
     <script src="sweetalert2.all.min.js"></script>
 </div>

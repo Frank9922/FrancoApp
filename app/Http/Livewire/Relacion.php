@@ -7,7 +7,6 @@ use App\Models\Producto;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 
-use function GuzzleHttp\Promise\all;
 
 class Relacion extends Component
 {
@@ -16,7 +15,8 @@ class Relacion extends Component
     public $query, $perpage, $search, $ascordesc,
             $cat, $openborrar, $opencrear,
             $confirmationdelete, $confirmationcreate, $product,
-            $nombre, $precio, $stock, $idcat;
+            $nombre, $precio, $stock, $idcat, $openedit, $confirmationedit,
+            $nomedit, $precedit, $stockedit, $idcatedit;
 
     public $rules= [
         'nombre' => 'required|min:4',
@@ -27,8 +27,6 @@ class Relacion extends Component
     public function mount(){
         $this->perpage=10;
         $this->ascordesc="asc";
-
-
     }
 
     public function resetext(){
@@ -61,6 +59,8 @@ class Relacion extends Component
 
     public function submit(){
         $this->validate();
+
+        //dd($this->nombre, $this->precio, $this->stock, $this->idcat);
         Producto::create([
             'nombre' => $this->nombre,
             'precio' => $this->precio,
@@ -79,6 +79,15 @@ class Relacion extends Component
         $this->openborrar=false;
     }
 
+    public function edit($id){
+        $this->openedit=true;
+    }
+
+    public function editconfirm($productoid){
+        $producto = Producto::where('id', $productoid);
+        $producto->nombre=$this->nomedit;
+        $producto->save();
+    }
     public function render()
     {
         $productos=DB::table('productos')

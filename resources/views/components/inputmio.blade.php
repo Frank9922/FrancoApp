@@ -1,0 +1,2 @@
+<input type="text" name="{{$name}}" placeholder="{{$placeholder}}"
+class="rounded-md border-0 py-1 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 f   ocus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">

@@ -20,4 +20,8 @@ class Producto extends Model
     public function categorias(){
         return $this->belongsTo(Categoria::class, 'id_categoria');
     }
+
+    public function etiquetas(){
+        return $this->belongsToMany(Etiqueta::class, 'id_etiqueta');
+    }
 }

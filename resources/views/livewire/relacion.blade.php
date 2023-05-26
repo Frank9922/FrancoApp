@@ -10,7 +10,7 @@
         </div>
         <select wire:model="cat" id="countries"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4 mt-4 w-min-100">
-            <option selected value="">Categorias ...</option>
+            <option selected value="">Todos...</option>
             @foreach ($categorias as $categoria)
                 <option value="{{ $categoria->id }}">{{ $categoria->descripcion }}</option>
             @endforeach
@@ -37,7 +37,7 @@
         @endif
     </div>
     <!--Tabla  -->
-    <div class="bg-white overflow-hidden shadaow-xl sm:rounded-lg mb-4">
+    <div class="bg-white overflow-hidden shadow-2xl sm:rounded-lg mb-4">
         <div class="flex flex-col">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -45,7 +45,7 @@
                         @if (empty($producto))
                             <table class="w-full text-left text-sm font-light">
                                 <thead class="border-b font-medium dark:border-neutral-500">
-                                    <tr>
+                                    <tr class="px-4 py-4 dark:border-neutral-500">
                                         <th scope="col" class="px-6 py-4"><button wire:click="ascdesc">Id</button>
                                         </th>
                                         <th scope="col" class="px-6 py-4">Nombre</th>
@@ -58,7 +58,7 @@
                                 </thead>
                                 @foreach ($productos as $item)
                                     <tbody>
-                                        <tr class="border-b dark:border-neutral-500">
+                                        <tr class="dark:border-neutral-500">
                                             <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $item->id }}</td>
                                             <td class="whitespace-nowrap px-6 py-4">{{ $item->nombre }}</td>
                                             <td class="whitespace-nowrap px-6 py-4">{{ $item->descripcion }}</td>

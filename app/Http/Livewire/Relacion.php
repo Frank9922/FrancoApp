@@ -15,8 +15,7 @@ class Relacion extends Component
     public $query, $perpage, $search, $ascordesc,
             $cat, $openborrar, $opencrear,
             $confirmationdelete, $confirmationcreate, $product,
-            $nombre, $precio, $stock, $idcat, $openedit, $confirmationedit,
-            $nomedit, $precedit, $stockedit, $idcatedit;
+            $nombre, $precio, $stock, $idcat, $openedit, $confirmationedit;
 
     public $rules= [
         'nombre' => 'required|min:4',
@@ -79,15 +78,24 @@ class Relacion extends Component
         $this->openborrar=false;
     }
 
-    public function edit($id){
+    public function edit(Producto $product){
         $this->openedit=true;
+        $this->product=$product;
+        
+        //Asignamos los valores del product en los inputs
+        $this->nombre=$product->nombre;
+        $this->precio=$product->precio;
+        $this->stock=$product->stock;
+        $this->idcat=$product->id_categoria;
     }
 
-    public function editconfirm($productoid){
-        $producto = Producto::where('id', $productoid);
-        $producto->nombre=$this->nomedit;
-        $producto->save();
+    public function update(Producto $product){
+        $product->nombre=$this->nombre;
+        $product->precio=$this->precio;
+        $product->stock=$this->stock;
+        $product->id_categoria=$this->idcat;
     }
+
     public function render()
     {
         $productos=DB::table('productos')
@@ -103,9 +111,7 @@ class Relacion extends Component
         $categorias=DB::table('categorias')->get();
 
         return view('livewire.relacion', ['productos' => $productos], ['categorias' => $categorias]);
-        // [
-        //     'productos'=>Producto::where('nombre', 'like', '%'.$this->search.'%', 'or', '')->paginate(10)
-        // ]);
+
     }
 
 }

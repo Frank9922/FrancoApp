@@ -26,6 +26,8 @@ return new class extends Migration
             ->constrained('etiquetas')
             ->cascadeOnUpdate()
             ->nullOnDelete();
+
+            $table->timestamps();
         });
     }
 

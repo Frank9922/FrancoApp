@@ -14,15 +14,6 @@ class CategoriaSeeder extends Seeder
      */
     public function run(): void
     {
-        $data = [
-            ['descripcion' => 'Telefono'],
-            ['descripcion' => 'Monitor'],
-            ['descripcion' => 'Notebook'],
-            ['descripcion' => 'Zapatillas'],
-            ['descripcion' => 'Auriculares'],
-        ];
-        DB::table('categorias')->insert($data);
-
-        // \App\Models\Categoria::factory(10)->create();
+         \App\Models\Categoria::factory(10)->create();
     }
 }

@@ -13,6 +13,6 @@ class Etiqueta_Producto_Seeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\etiqueta_producto::factory(10)->create();
+        \App\Models\etiquetas_productos::factory(30)->create();
     }
 }

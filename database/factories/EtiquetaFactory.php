@@ -17,7 +17,8 @@ class EtiquetaFactory extends Factory
     public function definition(): array
     {
         return [
-            "etiqueta" => $this->faker->randomLetter()
+            "etiqueta" => $this->faker->randomLetter(),
+            "color" => $this->faker->safeHexColor()
         ];
     }
 }

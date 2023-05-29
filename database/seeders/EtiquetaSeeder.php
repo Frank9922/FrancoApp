@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+
 
 class EtiquetaSeeder extends Seeder
 {
@@ -13,13 +13,6 @@ class EtiquetaSeeder extends Seeder
      */
     public function run(): void
     {
-        $data = [
-            ['etiqueta' => 'Grande'],
-            ['etiqueta' => 'Chiquito'],
-            ['etiqueta' => 'Mediano'],
-            ['etiqueta' => 'Blanco'],
-            ['etiqueta' => 'Negro'],
-        ];
-        DB::table('etiquetas')->insert($data);
+        \App\Models\Etiqueta::factory(10)->create();
     }
 }

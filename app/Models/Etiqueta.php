@@ -9,6 +9,8 @@ class Etiqueta extends Model
 {
     use HasFactory;
 
+    protected $fillable= ['etiqueta', 'color'];
+
     public function productos(){
         return $this->belongsToMany(Producto::class, 'etiquetas_productos');
     }

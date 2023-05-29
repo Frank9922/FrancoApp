@@ -3,11 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Etiqueta;
+use App\Models\Producto;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class Etiqueta_Productofactory extends Factory
+class etiquetas_productosFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,9 +18,12 @@ class Etiqueta_Productofactory extends Factory
      */
     public function definition(): array
     {
+        $numE= Etiqueta::count();
+        $numP= Producto::count();
+
         return [
-            'id_producto' =>$this->faker->numberBetween(1, 50),
-            'id_etiqueta' =>$this->faker->numberBetween(1, 5)
+            'producto_id' =>$this->faker->numberBetween(1, $numP),
+            'etiqueta_id' =>$this->faker->numberBetween(1, $numE)
         ];
     }
 }

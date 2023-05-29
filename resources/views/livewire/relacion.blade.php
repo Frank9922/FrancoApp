@@ -63,15 +63,11 @@
                                             <td class="whitespace-nowrap px-6 py-4">${{ $item->precio }}</td>
                                             <td class="whitespace-nowrap px-6 py-4">{{ $item->stock }}</td>
                                                 <td class="whitespace-nowrap">
-                                                    <span class="inline-flex rounded-md bg-green-50 px-1 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                                                    xdd
+                                                    @foreach ($item->etiquetas as $etiqueta)
+                                                    <span class="inline-flex rounded-md bg-[{{$etiqueta->color}}] px-1 py-1 text-xs font-medium text-{{$etiqueta->color}}-700 ring-1 ring-inset ring-{{$etiqueta->color}}-600/20">
+                                                    {{$etiqueta->etiqueta}}
                                                 </span>
-                                                <span class="inline-flex rounded-md bg-green-50 px-1 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                                                    xdd
-                                                </span>
-                                                <span class="inline-flex rounded-md bg-green-50 px-1 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                                                    xdd
-                                                </span>
+                                                @endforeach
                                                 </td>
                                             <td class="whitespace-nowrap">
                                                 <x-button wire:click='delete({{ $item->id }})'

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('etiquetas', function (Blueprint $table) {
             $table->id();
             $table->string('etiqueta');
+            $table->string('color');
+            $table->timestamps();
         });
     }
 

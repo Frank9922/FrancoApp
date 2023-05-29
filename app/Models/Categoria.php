@@ -11,7 +11,7 @@ class Categoria extends Model
 
     protected $table = 'categorias';
 
-    public $timestamp = false;
+    protected $fillable = ['descripcion'];
 
     public function productos(){
         return $this->hasMany(Producto::class, 'id');

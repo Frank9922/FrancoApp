@@ -15,7 +15,7 @@ class Relacion extends Component
     public $query, $perpage, $search, $ascordesc,
             $cat, $openborrar, $opencrear,
             $confirmationdelete, $confirmationcreate, $product,
-            $nombre, $precio, $stock, $idcat, $openedit, $confirmationedit;
+            $nombre, $precio, $stock, $idcat, $openedit, $confirmationedit, $ejemplo;
 
     public $rules= [
         'nombre' => 'required|min:4',
@@ -98,20 +98,24 @@ class Relacion extends Component
 
     public function render()
     {
-        $productos=DB::table('productos')
-                    ->select('productos.id', 'productos.nombre', 'productos.precio', 'productos.stock', 'categorias.descripcion')
-                    ->join('categorias', 'productos.id_categoria', '=', 'categorias.id')
-                    ->where(function($query)
-                    {
-                        $query->where('productos.nombre', 'like', '%'.$this->query.'%')
-                              ->Where('categorias.id', 'like', '%'.$this->cat.'%');
-                    })
-                    ->orderBy('productos.id', 'asc')
-                    ->paginate($this->perpage);
+        $productos = Producto::with('etiquetas', 'categorias')->paginate(10);
+
+        // $productos=DB::table('productos')
+        //             ->select('productos.id', 'productos.nombre', 'productos.precio', 'productos.stock', 'categorias.descripcion')
+        //             ->join('categorias', 'productos.id_categoria', '=', 'categorias.id')
+        //             ->where(function($query)
+        //             {
+        //                 $query->where('productos.nombre', 'like', '%'.$this->query.'%')
+        //                       ->Where('categorias.id', 'like', '%'.$this->cat.'%');
+        //             })
+        //             ->orderBy('productos.id', 'asc')
+        //             ->paginate($this->perpage);
+
+        
         $categorias=DB::table('categorias')->get();
 
         return view('livewire.relacion', ['productos' => $productos], ['categorias' => $categorias]);
-
+    
     }
 
 }

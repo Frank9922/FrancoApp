@@ -46,12 +46,11 @@
                             <table class="w-full text-left text-sm font-light">
                                 <thead class="border-b font-medium dark:border-neutral-500">
                                     <tr class="px-4 py-4 dark:border-neutral-500">
-                                        <th scope="col" class="px-6 py-4"><button wire:click="ascdesc">Id</button>
-                                        </th>
                                         <th scope="col" class="px-6 py-4">Nombre</th>
                                         <th scope="col" class="px-6 py-4">Categoria</th>
                                         <th scope="col" class="px-6 py-4">Precio</th>
                                         <th scope="col" class="px-6 py-4">Stock</th>
+                                        <th scope="col" class="px-6 py-6">Etiquetas</th>
                                         <th scope="col" class="px-6 py-4">Accion</th>
 
                                     </tr>
@@ -59,12 +58,22 @@
                                 @foreach ($productos as $item)
                                     <tbody>
                                         <tr class="dark:border-neutral-500">
-                                            <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $item->id }}</td>
                                             <td class="whitespace-nowrap px-6 py-4">{{ $item->nombre }}</td>
-                                            <td class="whitespace-nowrap px-6 py-4">{{ $item->descripcion }}</td>
+                                            <td class="whitespace-nowrap px-6 py-4">{{ $item->categorias->descripcion }}</td>
                                             <td class="whitespace-nowrap px-6 py-4">${{ $item->precio }}</td>
                                             <td class="whitespace-nowrap px-6 py-4">{{ $item->stock }}</td>
-                                            <td class="whitespace-nowrap px-6 py-4">
+                                                <td class="whitespace-nowrap">
+                                                    <span class="inline-flex rounded-md bg-green-50 px-1 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                                                    xdd
+                                                </span>
+                                                <span class="inline-flex rounded-md bg-green-50 px-1 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                                                    xdd
+                                                </span>
+                                                <span class="inline-flex rounded-md bg-green-50 px-1 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                                                    xdd
+                                                </span>
+                                                </td>
+                                            <td class="whitespace-nowrap">
                                                 <x-button wire:click='delete({{ $item->id }})'
                                                     class="bg-red-800 hover:bg-red-500">B</x-button>
                                                 <x-button wire:click="edit('{{$item->id}}')" class="bg-green-800 hover:bg-green-500">E</x-button>
@@ -87,7 +96,7 @@
                                 </div>
                             </div>
                         @endif
-                        {{ $productos->links() }}
+                         {{ $productos->links() }}
                     </div>
                 </div>
             </div>

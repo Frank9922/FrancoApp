@@ -10,6 +10,6 @@ class Etiqueta extends Model
     use HasFactory;
 
     public function productos(){
-        return $this->belongsToMany(Producto::class);
+        return $this->belongsToMany(Producto::class, 'etiquetas_productos');
     }
 }

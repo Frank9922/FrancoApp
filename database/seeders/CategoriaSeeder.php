@@ -14,6 +14,6 @@ class CategoriaSeeder extends Seeder
      */
     public function run(): void
     {
-         \App\Models\Categoria::factory(10)->create();
+         \App\Models\Categoria::factory(20)->create();
     }
 }

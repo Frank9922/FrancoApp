@@ -81,7 +81,7 @@ class Relacion extends Component
     public function edit(Producto $product){
         $this->openedit=true;
         $this->product=$product;
-        
+
         //Asignamos los valores del product en los inputs
         $this->nombre=$product->nombre;
         $this->precio=$product->precio;
@@ -98,7 +98,9 @@ class Relacion extends Component
 
     public function render()
     {
-        $productos = Producto::with('etiquetas', 'categorias')->paginate(10);
+        $productos = Producto::with('etiquetas', 'categorias')
+
+        ->paginate(10);
 
         // $productos=DB::table('productos')
         //             ->select('productos.id', 'productos.nombre', 'productos.precio', 'productos.stock', 'categorias.descripcion')
@@ -111,11 +113,11 @@ class Relacion extends Component
         //             ->orderBy('productos.id', 'asc')
         //             ->paginate($this->perpage);
 
-        
+
         $categorias=DB::table('categorias')->get();
 
         return view('livewire.relacion', ['productos' => $productos], ['categorias' => $categorias]);
-    
+
     }
 
 }
